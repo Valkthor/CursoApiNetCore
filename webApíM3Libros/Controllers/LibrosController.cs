@@ -57,7 +57,7 @@ namespace webApíM3Libros.Controllers
 
         [HttpPut("{id}")]
 
-        public ActionResult Put(int id, [FromBody] Autor value)
+        public ActionResult Put(int id, [FromBody] Libro value)
         {
 
             if (id != value.Id)
@@ -74,14 +74,14 @@ namespace webApíM3Libros.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            var autor = context.Autores.FirstOrDefault(x => x.Id == id);
+            var libro = context.Libros.FirstOrDefault(x => x.Id == id);
 
-            if (autor == null)
+            if (libro == null)
             {
                 return BadRequest();
             }
 
-            context.Autores.Remove(autor);
+            context.Libros.Remove(libro);
             context.SaveChanges();
             return Ok();
         }
