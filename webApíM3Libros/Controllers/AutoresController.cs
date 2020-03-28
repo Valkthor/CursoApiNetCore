@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using webApíM3Libros.Contexts;
 using webApíM3Libros.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace webApíM3Libros.Controllers
 {
@@ -35,6 +36,8 @@ namespace webApíM3Libros.Controllers
             return context.Autores.ToList();
         }
 
+        //consulta simple
+        /*
         [HttpGet("{id}", Name = "ObtenerAutor")]
         public ActionResult<Autor> Get(int id)
         {
@@ -50,10 +53,10 @@ namespace webApíM3Libros.Controllers
 
             return autor;
         }
-
+        */
         // se obtienen valores a traves de la url ej api/2/ricardo
         /*
-        [HttpGet("[{id}/param2=perez")]
+        [HttpGet("{id}/param2=perez")]
         public Autor Get(int id, string param2)
         {
             var autor = context.Autores.FirstOrDefault(x => x.Id == id);
@@ -61,7 +64,7 @@ namespace webApíM3Libros.Controllers
             return autor;
         }
         */
-
+        /*
         [HttpGet("[{id}/param2=perez")]
         public ActionResult<Autor> Get(int id, string param2)
         {
@@ -74,6 +77,9 @@ namespace webApíM3Libros.Controllers
             }
             return autor;
         }
+        */
+        // funcion asincrona
+        /*
         [HttpGet("asincrona/{id}/{param3}")]
         public async Task<ActionResult<Autor>> Get(int id, bool param3)
         {
@@ -87,8 +93,23 @@ namespace webApíM3Libros.Controllers
             }
             return autor;
         }
+        */
+        //model binder
 
-        <
+        [HttpGet("{id}/{param2}")]
+        public async Task<ActionResult<Autor>> Get(int id, [BindRequired] string param2)
+        {
+            // al colocar bind requiered, tiene que enviar obligatoriamente un valor
+
+            var autor = await context.Autores.FirstOrDefaultAsync(x => x.Id == id);
+            if (autor == null)
+            {
+                return NotFound();
+            }
+            return autor;
+        }
+
+
         // aca se hace un insert, para eso se le indica que tiene que leer el cuerpo de la peticion http
         [HttpPost]
         public ActionResult Post([FromBody] Autor autor)
