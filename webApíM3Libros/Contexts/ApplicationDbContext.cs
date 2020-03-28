@@ -27,6 +27,4 @@ namespace webApíM3Libros.Contexts
         public DbSet<Autor> Autores { get; set; }  
 
     }
-
-    }
 }
