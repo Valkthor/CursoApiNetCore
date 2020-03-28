@@ -32,7 +32,7 @@ namespace webApíM3Libros
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer (
                     //se esta obteniendo del proveedor el connection string
-                    Configuration.GetConnectionString ("DefaultConnectionString")
+                    Configuration.GetConnectionString ("DefaultConnection")
                     )
             );
             services.AddControllers();
