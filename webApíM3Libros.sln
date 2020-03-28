@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webApíM3Libros", "webApíM3Libros\webApíM3Libros.csproj", "{5D18275E-EC21-444F-AEF2-CAA3CE40D217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D18275E-EC21-444F-AEF2-CAA3CE40D217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D18275E-EC21-444F-AEF2-CAA3CE40D217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D18275E-EC21-444F-AEF2-CAA3CE40D217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D18275E-EC21-444F-AEF2-CAA3CE40D217}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7D0814A-067D-4F2B-8C26-AE81EFE7CE04}
+	EndGlobalSection
+EndGlobal
