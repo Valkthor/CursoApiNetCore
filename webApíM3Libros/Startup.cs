@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using webApíM3Libros.Contexts;
 
 namespace webApíM3Libros
 {
@@ -25,6 +27,14 @@ namespace webApíM3Libros
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //se configura la conexion de sql server
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer (
+                    //se esta obteniendo del proveedor el connection string
+                    Configuration.GetConnectionString ("DefaultConnectionString")
+                    )
+            );
             services.AddControllers();
         }
 
