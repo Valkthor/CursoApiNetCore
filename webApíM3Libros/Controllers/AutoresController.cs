@@ -74,9 +74,21 @@ namespace webApíM3Libros.Controllers
             }
             return autor;
         }
+        [HttpGet("asincrona/{id}/{param3}")]
+        public async Task<ActionResult<Autor>> Get(int id, bool param3)
+        {
+            // se espera una respuesta con el await a la operacion asincrona.
+            var autor = await context.Autores.FirstOrDefaultAsync(x => x.Id == id);
 
+            // al agregar action result, se puede validar a diferencia de la funcion de arriba.
+            if (autor == null)
+            {
+                return NotFound();
+            }
+            return autor;
+        }
 
-
+        <
         // aca se hace un insert, para eso se le indica que tiene que leer el cuerpo de la peticion http
         [HttpPost]
         public ActionResult Post([FromBody] Autor autor)
