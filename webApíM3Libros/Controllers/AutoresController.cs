@@ -51,6 +51,32 @@ namespace webApíM3Libros.Controllers
             return autor;
         }
 
+        // se obtienen valores a traves de la url ej api/2/ricardo
+        /*
+        [HttpGet("[{id}/param2=perez")]
+        public Autor Get(int id, string param2)
+        {
+            var autor = context.Autores.FirstOrDefault(x => x.Id == id);
+            //obtiene el dato del autor para mostrarlo
+            return autor;
+        }
+        */
+
+        [HttpGet("[{id}/param2=perez")]
+        public ActionResult<Autor> Get(int id, string param2)
+        {
+            var autor = context.Autores.FirstOrDefault(x => x.Id == id);
+            
+            // al agregar action result, se puede validar a diferencia de la funcion de arriba.
+            if (autor == null)
+            {
+                return NotFound();
+            }
+            return autor;
+        }
+
+
+
         // aca se hace un insert, para eso se le indica que tiene que leer el cuerpo de la peticion http
         [HttpPost]
         public ActionResult Post([FromBody] Autor autor)
