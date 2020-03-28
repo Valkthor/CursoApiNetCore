@@ -5,19 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using webApíM3Libros.Contexts;
 using webApíM3Libros.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace webApíM3Libros.Controllers
 {
     //se usa api antres por convencion
     [Route("api/[controller]")]
     [ApiController]
-    public class AutoresController: ControllerBase
+    public class AutoresController : ControllerBase
     {
         //inyectando el application db context en autores controller
         // para eso se crea una instancia
         private readonly ApplicationDbContext context;
 
-        public AutoresController( ApplicationDbContext context)
+        public AutoresController(ApplicationDbContext context)
         {
             this.context = context;
         }
@@ -34,14 +35,14 @@ namespace webApíM3Libros.Controllers
             return context.Autores.ToList();
         }
 
-        [HttpGet("{id}", Name ="ObtenerAutor")]
+        [HttpGet("{id}", Name = "ObtenerAutor")]
         public ActionResult<Autor> Get(int id)
         {
             //filtro en la bd el dato segun el id
             var autor = context.Autores.FirstOrDefault(x => x.Id == id);
 
             //se valida que traiga datos
-           if (autor == null)
+            if (autor == null)
             {
                 // se retorna 404
                 return NotFound();
@@ -54,7 +55,7 @@ namespace webApíM3Libros.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Autor autor)
         {
-
+            
             context.Autores.Add(autor);
             // se guardan los cambios
             context.SaveChanges();
@@ -68,7 +69,36 @@ namespace webApíM3Libros.Controllers
                 );
         }
 
+        [HttpPut("{id}")]
 
+        public ActionResult Put(int id, [FromBody] Autor value)
+        {
+
+            if (id != value.Id )
+            {
+                return BadRequest();
+            }
+
+            context.Entry(value).State = EntityState.Modified;
+            context.SaveChanges();
+            return Ok();
+        }
+
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var autor = context.Autores.FirstOrDefault(x => x.Id == id);
+
+            if (autor == null)
+            {
+                return BadRequest();
+            }
+
+            context.Autores.Remove(autor);
+            context.SaveChanges();
+            return Ok();
+        }
 
     }
 }

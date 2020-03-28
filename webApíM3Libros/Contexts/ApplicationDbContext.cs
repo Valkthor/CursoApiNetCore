@@ -24,7 +24,8 @@ namespace webApíM3Libros.Contexts
         // se tiene que agregar el dbset correspondiente en el using
         // en nuestroa base existira una tabla que se llama autores, 
         // cuyo esquema va a ser copiado de las propiedades de la clase autor
-        public DbSet<Autor> Autores { get; set; }  
+        public DbSet<Autor> Autores { get; set; }
+        public DbSet<Libro> Libros { get; set; }
 
     }
 }

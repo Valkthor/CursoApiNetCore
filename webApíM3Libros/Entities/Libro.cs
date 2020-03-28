@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace webApíM3Libros.Entities
 {
-    public class Autor
+    public class Libro
     {
         public int Id { get; set; }
 
         //se indica que esta propiedad es requerida al momento de recibir parametros por post
         [Required]
-        public string Nombre { get; set; }
-        public List<Libro> Libros { get; set; }
-
+        public string Titulo { get; set; }
+        [Required]
+        public int AutorId { get; set; }
+        public Autor Autor { get; set; }
     }
 }

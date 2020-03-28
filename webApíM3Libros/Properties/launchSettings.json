@@ -15,7 +15,8 @@
       "launchUrl": "api/autores",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "nativeDebugging": true
     },
     "webApíM3Libros": {
       "commandName": "Project",
