@@ -31,6 +31,7 @@ namespace WebApiModulo4.Entities
 
                 if (primeraLetra != primeraLetra.ToUpper())
                 {
+
                     yield return new ValidationResult("La primera letra debe ser mayúscula", new string[] { nameof(Nombre) });
                 }
             }
