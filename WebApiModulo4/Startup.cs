@@ -32,17 +32,26 @@ namespace WebApiModulo4
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //se agrega la configracion paa los filtros de acciones creados en helpers
             services.AddScoped<MiFiltroDeAccion>();
+
+            // se habilita un conjunto de servicios para la funcionalidad de guardar informacion en cache
             services.AddResponseCaching();
+
+            //aca se indica que clase se debe usar si la interfaz es solicitada.
+            services.AddTransient<IClaseB, ClaseB2>();
+
             services.AddTransient<ClaseB>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
             services.AddControllers(options =>
             {
+                
                 options.Filters.Add(new MiFiltroDeExcepcion());
                 // Si hubiese Inyección de dependencias en el filtro
                 //options.Filters.Add(typeof(MiFiltroDeExcepcion)); 
             });
 
+            //se agrega autenticacion
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer();
         }
@@ -62,9 +71,13 @@ namespace WebApiModulo4
 
             app.UseHttpsRedirection();
 app.UseRouting();
-app.UseResponseCaching();
-app.UseAuthentication();
-app.UseAuthorization();
+            // se configura un middleware de cache
+            app.UseResponseCaching(); 
+
+            //agregar autenticacion
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {

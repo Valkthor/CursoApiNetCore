@@ -18,6 +18,7 @@ namespace WebApiModulo4.Controllers
         private readonly ApplicationDbContext context;
         private readonly IClaseB claseB;
 
+        // al colocar claseB se puede implementar cuando se quiera.
         public AutoresController(ApplicationDbContext context, ClaseB claseB)
         {
             this.context = context;
@@ -27,7 +28,9 @@ namespace WebApiModulo4.Controllers
         // GET api/autores
         [HttpGet("/listado")]
         [HttpGet("listado")]
+        // nuevo endpoint (no entendi muy bien esta parte)
         [HttpGet]
+        //se aplica el filtro en el endpoint
         [ServiceFilter(typeof(MiFiltroDeAccion))]
         public ActionResult<IEnumerable<Autor>> Get()
         {

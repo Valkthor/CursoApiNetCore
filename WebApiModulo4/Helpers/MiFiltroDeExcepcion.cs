@@ -10,7 +10,7 @@ namespace WebApiModulo4.Helpers
     {
         public override void OnException(ExceptionContext context)
         {
-
+            //aca se maneja las distintas ecepciones
         }
     }
 }

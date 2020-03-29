@@ -9,11 +9,14 @@ namespace WebApiModulo4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
+    // se agrega seguridad de autenticacion, se puede agregar a uno o todos los metodos
     [Authorize]
     public class ValuesController : ControllerBase
     {
         // GET api/values
         [HttpGet]
+        //se configura el guardado de la informacion en cache por 15 segundos
         [ResponseCache(Duration = 15)]
         public ActionResult<string> Get()
         {
