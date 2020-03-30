@@ -1,0 +1,6 @@
+WriteToFileHostedService: Process Started
+WriteToFileHostedService: haciendo algo en 29-03-2020 09:53:11
+WriteToFileHostedService: haciendo algo en 29-03-2020 09:53:18
+WriteToFileHostedService: haciendo algo en 29-03-2020 09:53:25
+WriteToFileHostedService: haciendo algo en 29-03-2020 09:53:32
+WriteToFileHostedService: Process Stopped
