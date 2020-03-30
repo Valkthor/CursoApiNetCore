@@ -1,0 +1,3 @@
+WriteToFileHostedService: Process Started
+WriteToFileHostedService: Process Started
+WriteToFileHostedService: Process Stopped

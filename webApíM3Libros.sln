@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webApíM3Libros", "webApíM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiModulo4", "WebApiModulo4\WebApiModulo4.csproj", "{54861173-934A-4CA8-A693-8CDAE390D890}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iHostedServiceDemo", "iHostedServiceDemo\iHostedServiceDemo.csproj", "{77AFDF09-7560-4DC7-B572-121E88DEAB85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{54861173-934A-4CA8-A693-8CDAE390D890}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54861173-934A-4CA8-A693-8CDAE390D890}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54861173-934A-4CA8-A693-8CDAE390D890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77AFDF09-7560-4DC7-B572-121E88DEAB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77AFDF09-7560-4DC7-B572-121E88DEAB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77AFDF09-7560-4DC7-B572-121E88DEAB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77AFDF09-7560-4DC7-B572-121E88DEAB85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
