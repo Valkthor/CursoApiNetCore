@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace iHostedServiceDemo.Services
 {
     //al traer las librerias de IhostedService, se crea automaticamente la implentacion de las task
-    public class WriteToFileHostedService : IHostedService
+    public class WriteToFileHostedService : IHostedService, IDisposable 
     {
         private readonly IHostingEnvironment environment;
         private readonly string fileName = "File1.txt";
@@ -59,7 +59,17 @@ namespace iHostedServiceDemo.Services
         {
             WriteToFile("WriteToFileHostedService: Process Stopped");
             //throw new NotImplementedException();
+            // se desactiva el timer
+            timer?.Change(Timeout.Infinite, 0);
+
             return Task.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            //throw new NotImplementedException();
+            // se coloca el ? para que destruya el timer si es que existe.
+            timer?.Dispose();
         }
     }
 }
