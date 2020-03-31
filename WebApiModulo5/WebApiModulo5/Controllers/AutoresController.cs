@@ -56,6 +56,7 @@ namespace WebApiModulo5.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] AutorCreacionDTO autorCreacion)
         {
+            //mapea automaticamente lo que esta llegando y lo coloca en un objeto
             var autor = mapper.Map<Autor>(autorCreacion);
             context.Add(autor);
             await context.SaveChangesAsync();
@@ -67,7 +68,7 @@ namespace WebApiModulo5.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] AutorCreacionDTO autorActualizacion)
         {
-
+            
             var autor = mapper.Map<Autor>(autorActualizacion);
             autor.Id = id;
             context.Entry(autor).State = EntityState.Modified;
