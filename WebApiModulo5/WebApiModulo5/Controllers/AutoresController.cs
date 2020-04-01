@@ -76,6 +76,7 @@ namespace WebApiModulo5.Controllers
             return NoContent();
         }
 
+        //para actualizaciones parciales de un recurso.
         [HttpPatch("{id}")]
         public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<AutorCreacionDTO> patchDocument)
         {
