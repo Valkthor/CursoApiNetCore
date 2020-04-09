@@ -13,7 +13,7 @@ namespace WebApiModulo7.Controllers
     [Route("[controller]")]
 
     //se agrega el esquema de autenticacion que se va a utilizar
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "admin")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

@@ -35,10 +35,16 @@ namespace Modulo7LoginSeguridad
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            //foreach (var rol in roles)
-            //{
-            //    claims.Add(new Claim(ClaimTypes.Role, rol));
-            //}
+            //esto se agrego despues del original, agregue una validacion para los roles, si tiene datos entonces agrega el claim del role.
+            if (roles.Count > 0)
+            {
+                foreach (var rol in roles)
+                {
+                    // se agrega al claim todos los roles al cual pertenece el usuario
+                    claims.Add(new Claim(ClaimTypes.Role, rol));
+                }
+            }
+
 
             // se crean las llaves para el token, esta esta en la configuracion, seria ideal en una variable de ambiente
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:key"]));

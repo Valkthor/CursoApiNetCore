@@ -45,6 +45,7 @@ namespace Modulo7LoginSeguridad.Controllers
 
             if (result.Succeeded)
             {
+                // cuando se crea, el listado de roles se manda vacio.
                 return objBuildToken.MyBuildToken(UserInfoModel, new List<string>());
             }
             else
@@ -61,6 +62,8 @@ namespace Modulo7LoginSeguridad.Controllers
             if (result.Succeeded)
             {
                 var usuario = await _userManager.FindByEmailAsync(userInfoModel.Email);
+
+                // se obntiene el listado de roles
                 var roles = await _userManager.GetRolesAsync(usuario);
                 return objBuildToken.MyBuildToken(userInfoModel, roles);
             }

@@ -85,3 +85,24 @@ una vez lista esta parte se va al controlador que se quiere aplicar la validacio
   - se obtiene el usuario por su ID.
   - se agrega al user manager el claim del role de forma tradicional y con JW
 - se crea la funcion para remover, cambian algunas sintaxis minimas, mirar el archivo.
+
+luego se modifica la funcion para crear el token agregando los roles dentro del token
+
+## Probando el login
+
+Ejecutar el metodo del login con post, escribiendo email y password que se crean en el metodo api/Cuentas/crear
+
+Esto retornara un token, ese token se consulta al metodo de pruebas weatherforecast. Como el usuario no tiene el rol de usuario asignado no deberia entregar ningun resultado.
+
+Despues se agrega al usuario con el rol de administrador, esto es en api/usuarios/AsignarUsuarioRol con metodo POST
+
+{
+	"userID": "6bb42f73-8986-432f-aace-de3497488918",
+	"roleName": "admin"
+}
+
+se saca nuevo token en el login, y finalmente se trata de entrar al metodo prohibido.
+
+ademas sde puede ver el token en JWT.IO, donde se puede pegar el token y ver la informacion.
+
+funcionando!

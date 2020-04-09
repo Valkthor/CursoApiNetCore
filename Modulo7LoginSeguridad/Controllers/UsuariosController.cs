@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Modulo7LoginSeguridad.Models;
 using WebApiModulo7.Contexts;
+using WebApiModulo7.Models;
 
 namespace Modulo7LoginSeguridad.Controllers
 {
@@ -15,10 +16,10 @@ namespace Modulo7LoginSeguridad.Controllers
     public class UsuariosController : ControllerBase
     {
         private MyApplicationDbContext _MyContext;
-        private UserManager<IdentityUser> _MyUserManager;
+        private UserManager<MyApplicationUser> _MyUserManager;
 
         public UsuariosController( MyApplicationDbContext myContext,
-                                   UserManager<IdentityUser> MyUserManager )
+                                   UserManager<MyApplicationUser> MyUserManager )
         {
             this._MyContext = myContext;
             this._MyUserManager = MyUserManager;

@@ -35,10 +35,13 @@ namespace WebApiModulo7
             services.AddDbContext<MyApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
 
-            services.AddIdentity<MyApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<MyApplicationDbContext>()
-                .AddDefaultTokenProviders();
+   
+    services.AddIdentity<MyApplicationUser, IdentityRole>()
+        // services.AddDefaultIdentity<IdentityUser>()
+        .AddEntityFrameworkStores<MyApplicationDbContext>()
+        .AddDefaultTokenProviders();
 
+ 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                  options.TokenValidationParameters = new TokenValidationParameters
