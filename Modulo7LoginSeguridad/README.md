@@ -70,3 +70,18 @@ una vez lista esta parte se va al controlador que se quiere aplicar la validacio
 
 - se elige el controlador y se agrega el esquema de autenticacion que se va a utilizar
   - [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+### aplicando validacion de token con roles
+
+- se agrega un rol en la bd por defecto:
+  insert into AspNetRoles (id, ConcurrencyStamp, name, NormalizedName) 
+        values ( 'd77f8e79-ef65-4ee0-92bb-a87c045689d4', 'BSQ3CQBHVMTHMLXYAOZ2Q4UVG5RC6ASO', N'admin', N'admin')
+- se crea un controlador  para los usuarios con un constructor (ver UsuariosController.cs)
+- se crea un DTO en Models que se llama MyEditarRolDTO, con dos campos:
+  - UserID
+  - RoleName
+- se vuelve al controlador recien creado y se crea el parametro post el cual recibe un parametro del estilo MyEditarDTO
+- dentro de la funcion:
+  - se obtiene el usuario por su ID.
+  - se agrega al user manager el claim del role de forma tradicional y con JW
+- se crea la funcion para remover, cambian algunas sintaxis minimas, mirar el archivo.
