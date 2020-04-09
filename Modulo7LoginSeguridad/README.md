@@ -60,4 +60,13 @@ Scaffold-DbContext 'Data Source=VALK2-PC\SQLEXPRESS01; Initial Catalog=sistemaLo
 
 ## Aplicando la validacion del token
 
+- se tiene que ir al startup.cs y instalar el nuget para este using:
+  - using Microsoft.AspNetCore.Authentication.JwtBearer;
+- se agrega el services de autenticacion, la explicacion esta en el codigo de startup.cs
+- se configura el middleware para activar la configuracion de validacion del token:
+  - app.UseAuthorization();
 
+una vez lista esta parte se va al controlador que se quiere aplicar la validacion. Yo usare la aplicacion por defecto nomas.
+
+- se elige el controlador y se agrega el esquema de autenticacion que se va a utilizar
+  - [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
